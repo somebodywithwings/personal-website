@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  {{ if not .Date.IsZero }}<p class="date">{{ .Date.Format "2006-01-02" }}</p>{{ end }}
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+
+{{ if eq .Section "novels" }}
+  {{ $pages := .Parent.Pages.ByWeight }}
+  {{ $prev := "" }}
+  {{ $next := "" }}
+  {{ range $i, $p := $pages }}
+    {{ if eq $p.RelPermalink $.RelPermalink }}
+      {{ if gt $i 0 }}{{ $prev = index $pages (sub $i 1) }}{{ end }}
+      {{ if lt (add $i 1) (len $pages) }}{{ $next = index $pages (add $i 1) }}{{ end }}
+    {{ end }}
+  {{ end }}
+  <nav class="chapter-nav">
+    {{ if $prev }}<a href="{{ $prev.RelPermalink }}">&larr; {{ $prev.Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ if $next }}<a href="{{ $next.RelPermalink }}">{{ $next.Title }} &rarr;</a>{{ end }}
+  </nav>
+{{ end }}
+{{ end }}
