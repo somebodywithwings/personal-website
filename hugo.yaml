@@ -1,7 +1,6 @@
 baseURL: "https://example.com/"
 languageCode: "en-us"
 title: "Redigradon"
-theme: ""
 
 pagination:
   pagerSize: 10
