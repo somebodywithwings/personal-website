@@ -1,4 +1,4 @@
 ---
-title: "Knowledge"
+title: "دانش‌نامه"
 ---
-Notes, references, and reusable write-ups.
+یادداشت‌ها و مطالب مرجع.

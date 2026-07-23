@@ -1,5 +1,5 @@
 baseURL: "https://example.com/"
-languageCode: "en-us"
+languageCode: "fa-ir"
 title: "Redigradon"
 
 pagination:
@@ -12,15 +12,15 @@ markup:
 
 menu:
   main:
-    - name: "Blog"
+    - name: "بلاگ"
       url: "/blog/"
       weight: 10
-    - name: "Novels"
+    - name: "رمان‌ها"
       url: "/novels/"
       weight: 20
-    - name: "Knowledge"
+    - name: "دانش‌نامه"
       url: "/knowledge/"
       weight: 30
 
 params:
-  description: "Writing, novels, and notes."
+  description: "نوشته‌ها، رمان‌ها و یادداشت‌ها."

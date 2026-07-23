@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" dir="{{ if eq (.Params.direction | default "ltr") "rtl" }}rtl{{ else }}ltr{{ end }}">
+<html lang="{{ .Site.LanguageCode }}" dir="{{ if eq (.Params.direction | default "rtl") "ltr" }}ltr{{ else }}rtl{{ end }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,13 @@
   <meta property="og:image" content="{{ "images/logo.png" | absURL }}">
   <meta property="og:type" content="website">
   <link rel="icon" href="{{ "images/favicon.png" | relURL }}" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | relURL }}" title="{{ .Site.Title }} RSS">
 </head>
-<body class="{{ if eq (.Params.direction | default "ltr") "rtl" }}rtl{{ end }}">
+<body class="{{ if eq (.Params.direction | default "rtl") "ltr" }}ltr{{ else }}rtl{{ end }}">
   {{ partial "header.html" . }}
   <main class="container">
     {{ block "main" . }}{{ end }}

@@ -1,21 +1,21 @@
 ---
-title: "Home"
+title: "خانه"
 ---
 
-# Red Dragon With Wings
+# اژدهای سرخ بالدار
 
-Hi, I'm Red Dragon With Wings — this is my personal corner of the internet.
+سلام، من اژدهای سرخ بالدار هستم — این گوشه‌ی شخصی من در اینترنت است.
 
-## What's here
+## این‌جا چه چیزی هست
 
-- **Blog** — shorter posts, thoughts, updates
-- **Novels** — long-form fiction, published chapter by chapter
-- **Knowledge** — reference notes and write-ups, synced from my Obsidian vault
+- **بلاگ** — یادداشت‌های کوتاه‌تر، افکار، به‌روزرسانی‌ها
+- **رمان‌ها** — داستان‌های بلند، فصل به فصل منتشر می‌شوند
+- **دانش‌نامه** — یادداشت‌های مرجع، هم‌گام‌سازی‌شده از Obsidian
 
-## About me
+## درباره‌ی من
 
-_Replace this section with a real bio — background, interests, what you're working on, links to other places you exist online._
+_این بخش را با معرفی واقعی خودت جایگزین کن — پیشینه، علاقه‌مندی‌ها، روی چه چیزی کار می‌کنی، لینک به جاهای دیگری که حضور داری._
 
-## Contact
+## تماس
 
-_Add an email or social link here if you want to be reachable._
+_اگر می‌خواهی در دسترس باشی، ایمیل یا لینک شبکه‌های اجتماعی این‌جا اضافه کن._

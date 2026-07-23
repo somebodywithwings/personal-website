@@ -1,5 +1,6 @@
 ---
 title: "Docs"
+direction: ltr
 ---
 
 ## Stack

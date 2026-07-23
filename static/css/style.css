@@ -28,15 +28,15 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: "Georgia", "Iranian Sans", "Vazirmatn", serif;
+  font-family: "Vazirmatn", "Iranian Sans", Tahoma, sans-serif;
   line-height: 1.65;
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
-body.rtl {
-  font-family: "Vazirmatn", "Iranian Sans", Tahoma, sans-serif;
+body.ltr {
+  font-family: "Georgia", "Vazirmatn", serif;
 }
 
 .container {

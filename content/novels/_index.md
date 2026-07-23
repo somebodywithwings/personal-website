@@ -1,4 +1,4 @@
 ---
-title: "Novels"
+title: "رمان‌ها"
 ---
-Ongoing and finished works, chapter by chapter.
+آثار در حال نگارش و تمام‌شده، فصل به فصل.
