@@ -1,6 +1,7 @@
 ---
 title: A Mid Start To A Mid Life
 direction: ltr
+cover: images/covers/a-mid-start-to-a-mid-life.jpg
 ---
 # Synopsis
 
