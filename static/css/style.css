@@ -19,7 +19,11 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+  min-height: 100%;
+}
 
 body {
   background: var(--bg);
@@ -28,6 +32,7 @@ body {
   line-height: 1.65;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 body.rtl {
@@ -58,6 +63,15 @@ body.rtl {
   font-size: 1.15rem;
   color: var(--fg);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.site-logo {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
 }
 
 .site-nav a {
@@ -142,6 +156,28 @@ blockquote {
   padding-top: 1rem;
   border-top: 1px solid var(--border);
   font-size: 0.95rem;
+}
+
+.about-page h1 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.about-page h2 {
+  margin-top: 2rem;
+}
+
+.home-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.home-links a {
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .site-footer {

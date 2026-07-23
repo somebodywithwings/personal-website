@@ -1,34 +1,11 @@
 {{ define "main" }}
-<section class="home-intro">
+<article class="about-page">
   {{ .Content }}
-</section>
+</article>
 
-<section class="section-block">
-  <h2><a href="{{ "/blog/" | relURL }}">Blog</a></h2>
-  <ul class="post-list">
-    {{ range first 5 (where .Site.RegularPages "Section" "blog") }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="date">{{ .Date.Format "2006-01-02" }}</span></li>
-    {{ end }}
-  </ul>
-</section>
-
-<section class="section-block">
-  <h2><a href="{{ "/novels/" | relURL }}">Novels</a></h2>
-  <ul class="post-list">
-    {{ range where .Site.Sections "Section" "novels" }}
-      {{ range .Pages }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    {{ end }}
-  </ul>
-</section>
-
-<section class="section-block">
-  <h2><a href="{{ "/knowledge/" | relURL }}">Knowledge</a></h2>
-  <ul class="post-list">
-    {{ range first 5 (where .Site.RegularPages "Section" "knowledge") }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-    {{ end }}
-  </ul>
-</section>
+<nav class="home-links">
+  <a href="{{ "/blog/" | relURL }}">Blog &rarr;</a>
+  <a href="{{ "/novels/" | relURL }}">Novels &rarr;</a>
+  <a href="{{ "/knowledge/" | relURL }}">Knowledge &rarr;</a>
+</nav>
 {{ end }}
