@@ -1,0 +1,21 @@
+{{ $pages := .pages }}
+{{ $fallback := .fallback }}
+{{ $showDate := .showDate }}
+{{ $aspect := .aspect | default "portrait" }}
+<div class="card-grid">
+  {{ range $pages }}
+  {{ $cover := .Params.cover | default $fallback }}
+  <a class="card" href="{{ .RelPermalink }}">
+    <div class="card-image card-image--{{ $aspect }}">
+      <img src="{{ $cover | relURL }}" alt="{{ .Title }}" loading="lazy">
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{ .Title }}</h3>
+      {{ if $showDate }}{{ if not .Date.IsZero }}<span class="card-date">{{ .Date.Format "2006-01-02" }}</span>{{ end }}{{ end }}
+      {{ with .Params.description }}<p class="card-excerpt">{{ . }}</p>
+      {{ else }}<p class="card-excerpt">{{ .Summary | plainify | truncate 90 }}</p>
+      {{ end }}
+    </div>
+  </a>
+  {{ end }}
+</div>

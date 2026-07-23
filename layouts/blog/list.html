@@ -1,0 +1,6 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+
+{{ partial "card-grid.html" (dict "pages" .Pages.ByDate.Reverse "fallback" "images/covers/placeholder-blog.svg" "showDate" true "aspect" "landscape") }}
+{{ end }}
