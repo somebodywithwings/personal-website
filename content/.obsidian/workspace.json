@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_index.md",
+                "file": "404.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_index"
+              "title": "404"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_index.md",
+                "file": "404.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for _index"
+              "title": "Backlinks for 404"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_index.md",
+                "file": "404.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from _index"
+              "title": "Outgoing links from 404"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_index.md",
+                "file": "404.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _index"
+              "title": "Outline of 404"
             }
           }
         ]
@@ -186,9 +186,12 @@
   },
   "active": "95229a3619387c10",
   "lastOpenFiles": [
-    "404.md",
     "_index.md",
+    "blog/_index.md",
     "blog/startinga.md",
+    "knowledge/_index.md",
+    "knowledge/example-note.md",
+    "404.md",
     "novels/A Mid Start To A Mid Life/_index.md",
     "novels/my-first-novel/_index.md",
     "novels/A Mid Start To A Mid Life/chapter-01.md",
@@ -196,10 +199,7 @@
     "novels/my-first-novel/chapter-01.md",
     "novels/my-first-novel",
     "novels/_index.md",
-    "knowledge/_index.md",
-    "knowledge/example-note.md",
     "docs/_index.md",
-    "blog/_index.md",
     "novels/A Mid Start To A Mid Life/chapter-02.md",
     "novels/A Mid Start To A Mid Life/chapter-03.md",
     "novels/A Mid Start To A Mid Life/chapter-04.md",
