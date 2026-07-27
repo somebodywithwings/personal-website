@@ -4,6 +4,7 @@
       <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Title }} logo" class="site-logo">
       <span>{{ .Site.Title }}</span>
     </a>
+    <span class="site-tagline">{{ .Site.Params.description }}</span>
     <nav class="site-nav">
       {{ range .Site.Menus.main }}
         <a href="{{ .URL | relURL }}">{{ .Name }}</a>

@@ -1,11 +1,31 @@
 {{ define "main" }}
-<article class="about-page">
+<div class="hero animate-in">
+  <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Title }}" class="hero-avatar">
+  <div class="hero-text">
+    <h1>{{ .Site.Title }}</h1>
+    {{ with .Site.Params.tagline }}<p class="hero-tagline">{{ . }}</p>{{ end }}
+  </div>
+</div>
+
+<article class="about-page animate-in animate-in-delay-1">
   {{ .Content }}
 </article>
 
-<nav class="home-links">
-  <a href="{{ "/blog/" | relURL }}">Blog &rarr;</a>
-  <a href="{{ "/novels/" | relURL }}">Novels &rarr;</a>
-  <a href="{{ "/knowledge/" | relURL }}">Knowledge &rarr;</a>
+<nav class="home-links animate-in animate-in-delay-2">
+  <a class="home-link" href="{{ "/blog/" | relURL }}">
+    <span class="home-link-icon">✍️</span>
+    <span class="home-link-title">بلاگ</span>
+    <span class="home-link-desc">یادداشت‌های کوتاه‌تر، افکار، به‌روزرسانی‌ها</span>
+  </a>
+  <a class="home-link" href="{{ "/novels/" | relURL }}">
+    <span class="home-link-icon">📚</span>
+    <span class="home-link-title">رمان‌ها</span>
+    <span class="home-link-desc">داستان‌های بلند، فصل به فصل</span>
+  </a>
+  <a class="home-link" href="{{ "/knowledge/" | relURL }}">
+    <span class="home-link-icon">🧠</span>
+    <span class="home-link-title">دانش‌نامه</span>
+    <span class="home-link-desc">یادداشت‌های مرجع، هم‌گام از Obsidian</span>
+  </a>
 </nav>
 {{ end }}
