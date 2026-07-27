@@ -1,51 +1,81 @@
 /* ============================================
-   Redigradon — Eldritch Edition
-   A cosmic-horror, dragon-sigil aesthetic.
-   Deliberately single-theme (abyssal dark) —
-   no prefers-color-scheme split, this IS the theme.
+   Redigradon — Eldritch Horror Edition
+   Inspired by cosmic dread, ancient manuscripts,
+   and things that whisper from beyond the veil.
    ============================================ */
 
 :root {
-  /* Abyssal palette */
-  --bg: #08070a;
-  --bg-rgb: 8, 7, 10;
-  --bg-raised: #120e12;
-  --bg-warm: #1b1418;
-  --fg: #ded4c4;
-  --fg-soft: #b8ab97;
-  --muted: #7c6f60;
-  --muted-light: #4a4038;
+  /* The palette of something ancient and wrong */
+  --bg: #0a0a0c;
+  --bg-raised: #111114;
+  --bg-deep: #060608;
+  --bg-void: #030305;
 
-  /* Dragon-blood red */
-  --accent: #8a0f0f;
-  --accent-soft: #2a0808;
-  --accent-warm: #c11f1f;
-  --accent-glow: #ff3b3b;
+  --fg: #c4b9a8;
+  --fg-soft: #9e9585;
+  --fg-dim: #6b6458;
+  --fg-faint: #3d3830;
 
-  /* Sickly eldritch green, used sparingly for "wrongness" accents */
-  --eldritch: #3d5c3a;
-  --eldritch-glow: #6fae63;
+  --muted: #5c5548;
+  --muted-light: #7a7265;
 
-  --border: #221a1c;
-  --border-warm: #3a2a28;
+  /* The color of corrupted flesh and old blood */
+  --accent: #8b4513;
+  --accent-bright: #a0522d;
+  --accent-soft: #1a0f08;
+  --accent-glow: rgba(139, 69, 19, 0.15);
+  --accent-pulse: #cd5c0c;
+
+  /* The sickly green of phosphorescent decay */
+  --eldritch: #4a6741;
+  --eldritch-bright: #6b8f5e;
+  --eldritch-glow: rgba(74, 103, 65, 0.2);
+
+  /* The cold blue of distant stars and dead eyes */
+  --void: #2a3f5f;
+  --void-bright: #4a6fa5;
+  --void-glow: rgba(42, 63, 95, 0.15);
+
+  --border: #1c1a16;
+  --border-warm: #2a2520;
+  --border-eldritch: #1a2a15;
 
   /* Typography */
-  --font-display: "UnifrakturMaguntia", "Markazi Text", Georgia, serif;
+  --font-display: "Markazi Text", "Vazirmatn", Georgia, serif;
   --font-body: "Vazirmatn", "Iranian Sans", Tahoma, sans-serif;
-  --font-mono: "SF Mono", "Fira Code", monospace;
+  --font-mono: "Courier New", "SF Mono", monospace;
+  --font-eldritch: "Markazi Text", "Vazirmatn", serif;
 
+  /* Spacing & effects */
   --max-width: 720px;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(138, 15, 15, 0.08);
-  --shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(138, 15, 15, 0.12);
-  --glow-red: 0 0 24px rgba(255, 59, 59, 0.35);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 69, 19, 0.05);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 60px rgba(139, 69, 19, 0.08);
+  --shadow-eldritch: 0 0 20px rgba(74, 103, 65, 0.1), 0 0 40px rgba(74, 103, 65, 0.05);
 
+  /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-dread: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Force dark — there is no light here */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #0a0a0c;
+    --bg-raised: #111114;
+    --bg-deep: #060608;
+    --fg: #c4b9a8;
+    --fg-soft: #9e9585;
+    --muted: #5c5548;
+    --accent: #8b4513;
+    --accent-bright: #a0522d;
+    --border: #1c1a16;
+  }
 }
 
 /* ============================================
@@ -69,12 +99,12 @@ body {
   line-height: 1.85;
   min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
 
-  background-image:
-    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(138, 15, 15, 0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(61, 92, 58, 0.08) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.4) 100%);
+  /* The texture of old parchment seen by candlelight */
+  background-image: 
+    radial-gradient(ellipse at 30% 20%, var(--accent-glow) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, var(--eldritch-glow) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, var(--void-glow) 0%, transparent 60%);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -86,14 +116,18 @@ body.ltr {
 
 ::selection {
   background: var(--accent-soft);
-  color: var(--accent-glow);
+  color: var(--accent-bright);
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg); }
+/* ============================================
+   Scrollbar — like ancient binding
+   ============================================ */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-soft);
-  border-radius: 4px;
+  background: var(--border-warm);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
@@ -108,24 +142,34 @@ body.ltr {
 }
 
 /* ============================================
-   Header
+   Header — The threshold
    ============================================ */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(var(--bg-rgb), 0.82);
-  backdrop-filter: blur(12px) saturate(1.1);
-  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(16px) saturate(0.8);
+  -webkit-backdrop-filter: blur(16px) saturate(0.8);
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
-  transition: box-shadow 0.3s var(--ease-out), border-color 0.3s ease;
+  transition: all 0.4s var(--ease-out);
+}
+
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
 }
 
 .site-header.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  border-bottom-color: var(--border-warm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
 }
 
 .header-inner {
@@ -144,12 +188,13 @@ body.ltr {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  transition: opacity 0.2s ease, text-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 20px rgba(196, 185, 168, 0.1);
 }
 
-.site-title:hover {
-  opacity: 0.85;
-  text-shadow: var(--glow-red);
+.site-title:hover { 
+  color: var(--accent-bright);
+  text-shadow: 0 0 30px rgba(139, 69, 19, 0.3);
 }
 
 .site-logo {
@@ -157,13 +202,15 @@ body.ltr {
   width: 34px;
   object-fit: contain;
   border-radius: 50%;
-  filter: drop-shadow(0 0 6px rgba(138, 15, 15, 0.4));
-  transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
+  filter: sepia(0.3) contrast(1.1);
+  transition: all 0.4s var(--ease-spring);
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.2);
 }
 
 .site-title:hover .site-logo {
-  transform: rotate(-8deg) scale(1.08);
-  filter: drop-shadow(0 0 12px rgba(255, 59, 59, 0.6));
+  transform: rotate(-12deg) scale(1.08);
+  filter: sepia(0.5) contrast(1.2) brightness(1.1);
+  box-shadow: 0 0 25px rgba(139, 69, 19, 0.4);
 }
 
 .site-nav {
@@ -179,8 +226,9 @@ body.ltr {
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.2s var(--ease-out);
+  transition: all 0.3s var(--ease-out);
   position: relative;
+  letter-spacing: 0.02em;
 }
 
 .site-nav a::after {
@@ -189,16 +237,16 @@ body.ltr {
   bottom: 2px;
   left: 50%;
   right: 50%;
-  height: 2px;
-  background: var(--accent-glow);
-  box-shadow: 0 0 8px var(--accent-glow);
-  border-radius: 2px;
-  transition: all 0.25s var(--ease-out);
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transition: all 0.3s var(--ease-out);
 }
 
 .site-nav a:hover {
-  color: var(--fg);
-  background: var(--bg-warm);
+  color: var(--fg-soft);
+  background: var(--bg-raised);
+  text-shadow: 0 0 10px rgba(196, 185, 168, 0.2);
 }
 
 .site-nav a:hover::after {
@@ -211,7 +259,8 @@ body.ltr {
   font-size: 0.8rem;
   font-family: var(--font-display);
   font-style: italic;
-  opacity: 0.8;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 640px) {
@@ -220,58 +269,78 @@ body.ltr {
 }
 
 /* ============================================
-   Hero Section — the sigil chamber
+   Hero — The summoning circle
    ============================================ */
 
 .hero {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   margin: 3.5rem 0 3rem;
-  padding: 3rem 2rem 2.5rem;
+  padding: 2.5rem 2rem;
   background: var(--bg-raised);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-warm);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  position: relative;
   overflow: hidden;
-  text-align: center;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    repeating-radial-gradient(circle at 50% 40%,
-      transparent 0px, transparent 38px,
-      rgba(138, 15, 15, 0.05) 39px, rgba(138, 15, 15, 0.05) 40px);
+  top: -60%;
+  right: -15%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+  opacity: 0.4;
   pointer-events: none;
+  animation: void-breathe 8s ease-in-out infinite;
 }
 
-.hero-dragon {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 1rem;
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--eldritch-glow) 0%, transparent 50%);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: void-breathe 10s ease-in-out infinite reverse;
+}
+
+@keyframes void-breathe {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.hero-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-warm);
+  box-shadow: 
+    0 0 20px rgba(139, 69, 19, 0.3),
+    0 0 40px rgba(139, 69, 19, 0.1),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+  transition: all 0.5s var(--ease-spring);
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 0 18px rgba(255, 59, 59, 0.25));
-  transition: filter 0.4s ease, transform 0.5s var(--ease-spring);
+  filter: sepia(0.2) contrast(1.1);
 }
 
-.hero-dragon:hover {
-  filter: drop-shadow(0 0 30px rgba(255, 59, 59, 0.45));
-  transform: scale(1.03) rotate(1deg);
-}
-
-.hero-dragon .scale { fill: var(--accent); }
-.hero-dragon .scale-dark { fill: var(--accent-soft); }
-.hero-dragon .eye {
-  fill: var(--accent-glow);
-  animation: eyeGlow 3.2s ease-in-out infinite;
-}
-.hero-dragon .rune { stroke: var(--muted); opacity: 0.5; }
-
-@keyframes eyeGlow {
-  0%, 100% { opacity: 0.65; filter: drop-shadow(0 0 2px var(--accent-glow)); }
-  50% { opacity: 1; filter: drop-shadow(0 0 8px var(--accent-glow)); }
+.hero-avatar:hover {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 
+    0 0 30px rgba(139, 69, 19, 0.5),
+    0 0 60px rgba(139, 69, 19, 0.2),
+    inset 0 0 30px rgba(0, 0, 0, 0.6);
+  filter: sepia(0.4) contrast(1.2) brightness(1.1);
 }
 
 .hero-text {
@@ -283,19 +352,33 @@ body.ltr {
   margin: 0 0 0.5rem;
   font-size: 3rem;
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   line-height: 1.1;
   color: var(--fg);
-  text-shadow: 0 0 20px rgba(138, 15, 15, 0.5), 0 0 2px rgba(0,0,0,0.8);
+  text-shadow: 
+    0 0 20px rgba(196, 185, 168, 0.1),
+    0 0 40px rgba(139, 69, 19, 0.1);
+  position: relative;
+}
+
+.hero-text h1::after {
+  content: '';
+  position: absolute;
+  bottom: -0.3rem;
+  right: 0;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.6;
 }
 
 .hero-tagline {
-  color: var(--muted);
+  color: var(--fg-soft);
   font-size: 1.05rem;
-  margin: 0 auto;
-  max-width: 42ch;
-  line-height: 1.7;
+  margin: 0;
+  max-width: 40ch;
+  line-height: 1.8;
   font-style: italic;
 }
 
@@ -304,30 +387,47 @@ body.ltr {
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--muted-light);
+  font-size: 0.8rem;
+  color: var(--eldritch);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-status::before {
   content: '';
-  width: 7px;
-  height: 7px;
-  background: var(--accent-glow);
+  width: 6px;
+  height: 6px;
+  background: var(--eldritch);
   border-radius: 50%;
-  box-shadow: 0 0 6px var(--accent-glow);
-  animation: pulse 2.4s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--eldritch), 0 0 16px var(--eldritch-glow);
+  animation: eldritch-pulse 3s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.3); }
+@keyframes eldritch-pulse {
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: scale(1);
+    box-shadow: 0 0 8px var(--eldritch), 0 0 16px var(--eldritch-glow);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.3);
+    box-shadow: 0 0 12px var(--eldritch), 0 0 24px var(--eldritch-glow), 0 0 40px var(--eldritch-glow);
+  }
 }
 
 @media (max-width: 560px) {
-  .hero { padding: 2.25rem 1.5rem; }
-  .hero-dragon { width: 130px; height: 130px; }
-  .hero-text h1 { font-size: 2.3rem; }
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+  .hero-avatar { width: 80px; height: 80px; }
+  .hero-text h1 { font-size: 2.4rem; }
+  .hero-text h1::after { right: 50%; transform: translateX(50%); }
   .hero-tagline { font-size: 0.95rem; }
 }
 
@@ -342,24 +442,30 @@ main.container {
 }
 
 /* ============================================
-   Typography
+   Typography — The language of the old ones
    ============================================ */
 
 h1, h2, h3, h4 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  line-height: 1.3;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 
-h1 { font-size: 2.4rem; margin-bottom: 0.6rem; color: var(--fg); }
+h1 { 
+  font-size: 2.6rem; 
+  margin-bottom: 0.6rem;
+  color: var(--fg);
+  text-shadow: 0 0 15px rgba(196, 185, 168, 0.08);
+}
 
-h2 {
-  font-size: 1.5rem;
-  margin-top: 3rem;
+h2 { 
+  font-size: 1.7rem; 
+  margin-top: 3rem; 
   margin-bottom: 1rem;
   position: relative;
   padding-bottom: 0.6rem;
-  color: var(--fg);
+  color: var(--fg-soft);
 }
 
 h2::after {
@@ -367,52 +473,55 @@ h2::after {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 70px;
+  width: 80px;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-glow), transparent);
-  box-shadow: 0 0 6px rgba(255, 59, 59, 0.4);
-  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.5;
 }
 
-h2 a {
-  color: var(--fg);
+h2 a { 
+  color: var(--fg-soft); 
   text-decoration: none;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-h2 a:hover { color: var(--accent-glow); text-shadow: var(--glow-red); }
+h2 a:hover { 
+  color: var(--accent-bright);
+  text-shadow: 0 0 15px rgba(139, 69, 19, 0.2);
+}
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  color: var(--fg-soft);
+  color: var(--fg-dim);
+  letter-spacing: 0.04em;
 }
 
 a {
-  color: var(--accent-warm);
+  color: var(--accent-bright);
   text-decoration: underline;
-  text-decoration-color: var(--accent-soft);
+  text-decoration-color: var(--accent);
   text-underline-offset: 4px;
-  text-decoration-thickness: 1.5px;
-  transition: all 0.2s ease;
+  text-decoration-thickness: 1px;
+  transition: all 0.3s ease;
 }
 
 a:hover {
-  text-decoration-color: var(--accent-glow);
-  color: var(--accent-glow);
-  text-shadow: 0 0 8px rgba(255, 59, 59, 0.35);
+  text-decoration-color: var(--accent-pulse);
+  color: var(--accent-pulse);
+  text-shadow: 0 0 10px rgba(205, 92, 12, 0.2);
 }
 
-p, li {
-  color: var(--fg-soft);
+p, li { 
+  color: var(--fg-soft); 
   margin-bottom: 1rem;
 }
 
 p:last-child { margin-bottom: 0; }
 
 /* ============================================
-   About / Content Page (rendered via .Content)
+   About Page
    ============================================ */
 
 .about-page {
@@ -420,31 +529,45 @@ p:last-child { margin-bottom: 0; }
 }
 
 .about-page h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-family: var(--font-body);
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
 }
 
 .about-page > p:first-of-type {
   font-size: 1.15rem;
-  color: var(--fg-soft);
+  color: var(--fg-dim);
   line-height: 1.9;
   margin-bottom: 2rem;
+  font-style: italic;
 }
 
 body:not(.ltr) .about-page > p:first-of-type::first-letter,
 body.ltr .about-page > p:first-of-type::first-letter {
   font-family: var(--font-display);
-  font-size: 2.6rem;
-  font-weight: 400;
-  color: var(--accent-warm);
-  text-shadow: 0 0 10px rgba(138, 15, 15, 0.5);
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  float: right;
+  line-height: 0.85;
+  margin-inline-start: 0.5rem;
+  margin-top: 0.2rem;
+  text-shadow: 0 0 20px rgba(139, 69, 19, 0.3);
+}
+
+body.ltr .about-page > p:first-of-type::first-letter {
+  float: left;
+  margin-inline-end: 0.5rem;
+  margin-inline-start: 0;
 }
 
 .about-page h2 {
   margin-top: 2.5rem;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--muted);
   font-family: var(--font-body);
   font-weight: 600;
@@ -452,35 +575,26 @@ body.ltr .about-page > p:first-of-type::first-letter {
 
 .about-page h2::after { display: none; }
 
-.about-page h2::before {
-  content: '◈';
-  display: inline-block;
-  margin-inline-end: 0.5rem;
-  color: var(--accent);
-}
-
-body.ltr .about-page h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
 .about-page ul {
   list-style: none;
   padding: 0;
 }
 
 .about-page ul li {
-  padding: 0.5rem 0;
-  padding-inline-start: 1.5rem;
+  padding: 0.6rem 0;
+  padding-inline-start: 1.75rem;
   position: relative;
+  color: var(--fg-soft);
 }
 
 .about-page ul li::before {
-  content: '—';
+  content: '◆';
   position: absolute;
   right: 0;
-  color: var(--accent-warm);
-  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.6rem;
+  top: 0.9rem;
+  text-shadow: 0 0 8px rgba(139, 69, 19, 0.4);
 }
 
 body.ltr .about-page ul li::before {
@@ -489,7 +603,7 @@ body.ltr .about-page ul li::before {
 }
 
 /* ============================================
-   Post List
+   Post List — Chronicles of the damned
    ============================================ */
 
 .post-list {
@@ -499,18 +613,36 @@ body.ltr .about-page ul li::before {
 }
 
 .post-list li {
-  padding: 1rem 0;
+  padding: 1.1rem 0;
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 1.5rem;
-  transition: padding-inline-start 0.2s var(--ease-out), border-color 0.2s ease;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+}
+
+.post-list li::before {
+  content: '';
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: height 0.3s var(--ease-out);
+  box-shadow: 0 0 8px rgba(139, 69, 19, 0.3);
 }
 
 .post-list li:hover {
   padding-inline-start: 0.5rem;
-  border-color: var(--border-warm);
+}
+
+.post-list li:hover::before {
+  height: 60%;
 }
 
 .post-list li a {
@@ -518,17 +650,21 @@ body.ltr .about-page ul li::before {
   color: var(--fg);
   font-weight: 500;
   font-size: 1.05rem;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.post-list li a:hover { color: var(--accent-glow); }
+.post-list li a:hover { 
+  color: var(--accent-bright);
+  text-shadow: 0 0 12px rgba(139, 69, 19, 0.2);
+}
 
 .post-list .date {
-  color: var(--muted-light);
-  font-size: 0.8rem;
+  color: var(--fg-faint);
+  font-size: 0.78rem;
   font-family: var(--font-mono);
   white-space: nowrap;
   flex-shrink: 0;
+  letter-spacing: 0.05em;
 }
 
 /* ============================================
@@ -539,15 +675,20 @@ body.ltr .about-page ul li::before {
   margin-top: 2rem;
 }
 
-.content img {
-  max-width: 100%;
+.content img { 
+  max-width: 100%; 
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  filter: saturate(0.9) contrast(1.05);
+  filter: sepia(0.15) contrast(1.05);
+  transition: filter 0.3s ease;
+}
+
+.content img:hover {
+  filter: sepia(0.05) contrast(1.1);
 }
 
 .content pre {
-  background: var(--bg-warm);
+  background: var(--bg-deep);
   padding: 1.25rem;
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -556,34 +697,56 @@ body.ltr .about-page ul li::before {
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 1.5rem 0;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .content code {
-  background: var(--bg-warm);
+  background: var(--bg-deep);
   padding: 0.15rem 0.4rem;
-  border-radius: 4px;
+  border-radius: 3px;
   font-family: var(--font-mono);
   font-size: 0.9em;
-  color: var(--accent-glow);
+  color: var(--eldritch-bright);
+  border: 1px solid var(--border);
 }
 
 .content pre code {
   background: none;
   padding: 0;
   color: inherit;
+  border: none;
 }
 
 blockquote {
   border-inline-start: 3px solid var(--accent);
   margin: 2rem 0;
-  padding: 1rem 1.5rem;
-  color: var(--muted);
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 1.1rem;
+  padding: 1.25rem 1.5rem;
+  padding-inline-start: 1.5rem;
+  color: var(--fg-dim);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
   line-height: 1.7;
   background: var(--bg-raised);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -0.2rem;
+  right: 0.5rem;
+  font-size: 3.5rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  line-height: 1;
+  opacity: 0.15;
+}
+
+body.ltr blockquote::before {
+  right: auto;
+  left: 0.5rem;
 }
 
 /* ============================================
@@ -605,27 +768,30 @@ blockquote {
   gap: 0.25rem;
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .chapter-nav a:hover {
-  background: var(--bg-warm);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-sm);
 }
 
 .chapter-nav .label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted-light);
+  letter-spacing: 0.1em;
+  color: var(--fg-faint);
+  font-family: var(--font-mono);
 }
 
 .chapter-nav .title {
-  color: var(--fg);
+  color: var(--fg-soft);
   font-weight: 500;
 }
 
 /* ============================================
-   Home Links (Cards Grid)
+   Home Links — Portals to other realms
    ============================================ */
 
 .home-links {
@@ -635,6 +801,18 @@ blockquote {
   margin-top: 3.5rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.home-links::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 30%;
+  right: 30%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.4;
 }
 
 .home-link {
@@ -642,13 +820,13 @@ blockquote {
   flex-direction: column;
   gap: 0.5rem;
   text-decoration: none;
-  padding: 1.5rem;
+  padding: 1.75rem 1.5rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--fg);
   background: var(--bg-raised);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s var(--ease-out);
+  transition: all 0.4s var(--ease-out);
   position: relative;
   overflow: hidden;
 }
@@ -660,11 +838,21 @@ blockquote {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-glow));
-  box-shadow: 0 0 10px rgba(255, 59, 59, 0.5);
+  background: linear-gradient(90deg, var(--accent), var(--eldritch));
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.3s var(--ease-out);
+  transition: transform 0.4s var(--ease-out);
+  box-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+}
+
+.home-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .home-link:hover {
@@ -677,37 +865,51 @@ blockquote {
   transform: scaleX(1);
 }
 
-.home-link-title {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--fg);
-  transition: color 0.2s ease;
+.home-link:hover::after {
+  opacity: 1;
 }
 
-.home-link:hover .home-link-title { color: var(--accent-glow); }
+.home-link-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--fg);
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.home-link:hover .home-link-title { 
+  color: var(--accent-bright);
+  text-shadow: 0 0 15px rgba(139, 69, 19, 0.2);
+}
 
 .home-link-desc {
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 .home-link-icon {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin-bottom: 0.25rem;
-  opacity: 0.75;
-  filter: drop-shadow(0 0 4px rgba(255, 59, 59, 0.2));
-  transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
+  opacity: 0.5;
+  transition: all 0.4s var(--ease-spring);
+  filter: grayscale(0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .home-link:hover .home-link-icon {
-  transform: scale(1.15) rotate(-5deg);
-  filter: drop-shadow(0 0 8px rgba(255, 59, 59, 0.4));
+  transform: scale(1.2) rotate(-8deg);
+  opacity: 0.8;
+  filter: grayscale(0);
 }
 
 /* ============================================
-   Card Grid (Novels/Posts)
+   Card Grid — Tomes of forbidden knowledge
    ============================================ */
 
 .card-grid {
@@ -727,13 +929,29 @@ blockquote {
   overflow: hidden;
   background: var(--bg-raised);
   box-shadow: var(--shadow-sm);
-  transition: all 0.35s var(--ease-out);
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(139, 69, 19, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: var(--border-warm);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card-image {
@@ -745,9 +963,9 @@ blockquote {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(8,7,10,0.6) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(10, 10, 12, 0.6) 0%, transparent 50%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .card:hover .card-image::after {
@@ -762,12 +980,13 @@ blockquote {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: saturate(0.85) contrast(1.08);
-  transition: transform 0.5s var(--ease-out);
+  transition: transform 0.6s var(--ease-out);
+  filter: sepia(0.2) contrast(1.05);
 }
 
 .card:hover .card-image img {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: sepia(0.1) contrast(1.1);
 }
 
 .card-body {
@@ -775,25 +994,28 @@ blockquote {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .card-title {
   font-size: 1.05rem;
   margin: 0;
   line-height: 1.4;
-  font-weight: 700;
-  font-family: var(--font-body);
+  font-weight: 600;
+  font-family: var(--font-display);
 }
 
 .card-date {
-  color: var(--muted-light);
-  font-size: 0.78rem;
+  color: var(--fg-faint);
+  font-size: 0.75rem;
   font-family: var(--font-mono);
+  letter-spacing: 0.05em;
 }
 
 .card-excerpt {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   margin: 0;
   line-height: 1.55;
   display: -webkit-box;
@@ -803,70 +1025,89 @@ blockquote {
 }
 
 /* ============================================
-   Tags / Badges
+   Tags / Seals
    ============================================ */
 
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.7rem;
-  background: var(--bg-warm);
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-deep);
   border: 1px solid var(--border);
   border-radius: 100px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
 }
 
 .tag:hover {
   background: var(--accent-soft);
-  color: var(--accent-glow);
+  color: var(--accent-bright);
   border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(139, 69, 19, 0.15);
 }
 
 /* ============================================
-   Divider — a jagged sigil-line instead of a plain rule
+   Divider — The thin veil
    ============================================ */
 
 .divider {
-  height: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-warm), transparent);
   margin: 3rem 0;
   border: none;
-  background:
-    linear-gradient(90deg, transparent, var(--border-warm) 20%, var(--border-warm) 80%, transparent);
-  clip-path: polygon(
-    0% 50%, 5% 20%, 10% 50%, 15% 80%, 20% 50%, 25% 20%, 30% 50%, 35% 80%,
-    40% 50%, 45% 20%, 50% 50%, 55% 80%, 60% 50%, 65% 20%, 70% 50%, 75% 80%,
-    80% 50%, 85% 20%, 90% 50%, 95% 80%, 100% 50%, 100% 55%, 95% 85%, 90% 55%,
-    85% 25%, 80% 55%, 75% 85%, 70% 55%, 65% 25%, 60% 55%, 55% 85%, 50% 55%,
-    45% 25%, 40% 55%, 35% 85%, 30% 55%, 25% 25%, 20% 55%, 15% 85%, 10% 55%, 5% 25%, 0% 55%
-  );
+  position: relative;
+}
+
+.divider::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--accent);
+  font-size: 0.5rem;
+  opacity: 0.4;
 }
 
 /* ============================================
-   Footer
+   Footer — The abyss stares back
    ============================================ */
 
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 2.5rem 0;
-  color: var(--muted);
+  color: var(--fg-faint);
   font-size: 0.85rem;
   text-align: center;
-  background: linear-gradient(to bottom, transparent, var(--bg-warm));
+  background: linear-gradient(to bottom, transparent, var(--bg-deep));
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
 }
 
 .site-footer a {
-  color: var(--muted);
-  text-decoration-color: var(--border-warm);
-  transition: all 0.2s ease;
+  color: var(--fg-faint);
+  text-decoration-color: var(--border);
+  transition: all 0.3s ease;
 }
 
-.site-footer a:hover {
-  color: var(--accent-glow);
-  text-decoration-color: var(--accent-glow);
-  text-shadow: 0 0 6px rgba(255, 59, 59, 0.3);
+.site-footer a:hover { 
+  color: var(--accent-bright); 
+  text-decoration-color: var(--accent);
+  text-shadow: 0 0 10px rgba(139, 69, 19, 0.2);
 }
 
 .footer-links {
@@ -884,23 +1125,79 @@ blockquote {
 }
 
 /* ============================================
-   Fade-in Animation
+   Animations — Things that move in the dark
    ============================================ */
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(5px, -5px); }
+  50% { transform: translate(-3px, 8px); }
+  75% { transform: translate(8px, 3px); }
 }
 
 .animate-in {
-  animation: fadeInUp 0.6s var(--ease-out) forwards;
+  animation: fadeInUp 0.8s var(--ease-out) forwards;
   opacity: 0;
 }
 
-.animate-in-delay-1 { animation-delay: 0.1s; }
-.animate-in-delay-2 { animation-delay: 0.2s; }
-.animate-in-delay-3 { animation-delay: 0.3s; }
-.animate-in-delay-4 { animation-delay: 0.4s; }
+.animate-in-delay-1 { animation-delay: 0.15s; }
+.animate-in-delay-2 { animation-delay: 0.3s; }
+.animate-in-delay-3 { animation-delay: 0.45s; }
+.animate-in-delay-4 { animation-delay: 0.6s; }
+
+/* Subtle floating particles effect on hero */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-particles span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-rise 6s ease-in-out infinite;
+}
+
+.hero-particles span:nth-child(1) { left: 20%; animation-delay: 0s; animation-duration: 7s; }
+.hero-particles span:nth-child(2) { left: 50%; animation-delay: 2s; animation-duration: 9s; }
+.hero-particles span:nth-child(3) { left: 80%; animation-delay: 4s; animation-duration: 8s; }
+
+@keyframes particle-rise {
+  0% { 
+    bottom: -10px; 
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { 
+    bottom: 100%; 
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
 
 /* ============================================
    Responsive
@@ -908,14 +1205,16 @@ blockquote {
 
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  h1 { font-size: 2.1rem; }
-  h2 { font-size: 1.3rem; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.4rem; }
   .card-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   .home-links { grid-template-columns: 1fr; }
   .post-list li { flex-direction: column; gap: 0.25rem; }
   .post-list .date { font-size: 0.75rem; }
+  .hero { padding: 2rem 1.25rem; }
 }
 
+/* Reduced motion — for those who fear the movement */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
