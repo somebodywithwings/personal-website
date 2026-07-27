@@ -1,62 +1,51 @@
 /* ============================================
-   Redigradon — Redesigned
-   A warm, literary, slightly editorial aesthetic
+   Redigradon — Eldritch Edition
+   A cosmic-horror, dragon-sigil aesthetic.
+   Deliberately single-theme (abyssal dark) —
+   no prefers-color-scheme split, this IS the theme.
    ============================================ */
 
 :root {
-  /* Warm parchment palette */
-  --bg: #f7f3ed;
-  --bg-rgb: 247, 243, 237; /* keep in sync with --bg, used for translucent header */
-  --bg-raised: #ffffff;
-  --bg-warm: #f0e8dc;
-  --fg: #1c1917;
-  --fg-soft: #44403c;
-  --muted: #78716c;
-  --muted-light: #a8a29e;
-  --accent: #b45309;
-  --accent-soft: #fef3c7;
-  --accent-warm: #d97706;
-  --border: #e7e5e4;
-  --border-warm: #d6d3d1;
+  /* Abyssal palette */
+  --bg: #08070a;
+  --bg-rgb: 8, 7, 10;
+  --bg-raised: #120e12;
+  --bg-warm: #1b1418;
+  --fg: #ded4c4;
+  --fg-soft: #b8ab97;
+  --muted: #7c6f60;
+  --muted-light: #4a4038;
+
+  /* Dragon-blood red */
+  --accent: #8a0f0f;
+  --accent-soft: #2a0808;
+  --accent-warm: #c11f1f;
+  --accent-glow: #ff3b3b;
+
+  /* Sickly eldritch green, used sparingly for "wrongness" accents */
+  --eldritch: #3d5c3a;
+  --eldritch-glow: #6fae63;
+
+  --border: #221a1c;
+  --border-warm: #3a2a28;
 
   /* Typography */
-  --font-display: "Markazi Text", "Vazirmatn", Georgia, serif;
+  --font-display: "UnifrakturMaguntia", "Markazi Text", Georgia, serif;
   --font-body: "Vazirmatn", "Iranian Sans", Tahoma, sans-serif;
   --font-mono: "SF Mono", "Fira Code", monospace;
 
-  /* Spacing & effects */
   --max-width: 720px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.04);
-  --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
-  --shadow-lg: 0 12px 40px rgba(28, 25, 23, 0.08), 0 4px 12px rgba(28, 25, 23, 0.04);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 
-  /* Transitions */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(138, 15, 15, 0.08);
+  --shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(138, 15, 15, 0.12);
+  --glow-red: 0 0 24px rgba(255, 59, 59, 0.35);
+
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0c0a09;
-    --bg-rgb: 12, 10, 9; /* FIX: this was missing, header was staying light-beige in dark mode */
-    --bg-raised: #1c1917;
-    --bg-warm: #292524;
-    --fg: #fafaf9;
-    --fg-soft: #e7e5e4;
-    --muted: #a8a29e;
-    --muted-light: #78716c;
-    --accent: #f59e0b;
-    --accent-soft: #451a03;
-    --accent-warm: #fbbf24;
-    --border: #292524;
-    --border-warm: #44403c;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
-  }
 }
 
 /* ============================================
@@ -80,10 +69,12 @@ body {
   line-height: 1.85;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
 
   background-image:
-    radial-gradient(ellipse at 20% 0%, var(--accent-soft) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, var(--bg-warm) 0%, transparent 40%);
+    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(138, 15, 15, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(61, 92, 58, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.4) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -95,16 +86,16 @@ body.ltr {
 
 ::selection {
   background: var(--accent-soft);
-  color: var(--fg);
+  color: var(--accent-glow);
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-warm);
+  background: var(--accent-soft);
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--muted-light); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 /* ============================================
    Layout
@@ -124,16 +115,17 @@ body.ltr {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(var(--bg-rgb), 0.8);
-  backdrop-filter: blur(12px) saturate(1.2);
-  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  background: rgba(var(--bg-rgb), 0.82);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
-  transition: box-shadow 0.3s var(--ease-out);
+  transition: box-shadow 0.3s var(--ease-out), border-color 0.3s ease;
 }
 
 .site-header.scrolled {
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-bottom-color: var(--border-warm);
 }
 
 .header-inner {
@@ -152,21 +144,26 @@ body.ltr {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, text-shadow 0.3s ease;
 }
 
-.site-title:hover { opacity: 0.7; }
+.site-title:hover {
+  opacity: 0.85;
+  text-shadow: var(--glow-red);
+}
 
 .site-logo {
   height: 34px;
   width: 34px;
   object-fit: contain;
   border-radius: 50%;
-  transition: transform 0.3s var(--ease-spring);
+  filter: drop-shadow(0 0 6px rgba(138, 15, 15, 0.4));
+  transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
 }
 
 .site-title:hover .site-logo {
-  transform: rotate(-8deg) scale(1.05);
+  transform: rotate(-8deg) scale(1.08);
+  filter: drop-shadow(0 0 12px rgba(255, 59, 59, 0.6));
 }
 
 .site-nav {
@@ -193,7 +190,8 @@ body.ltr {
   left: 50%;
   right: 50%;
   height: 2px;
-  background: var(--accent);
+  background: var(--accent-glow);
+  box-shadow: 0 0 8px var(--accent-glow);
   border-radius: 2px;
   transition: all 0.25s var(--ease-out);
 }
@@ -222,51 +220,58 @@ body.ltr {
 }
 
 /* ============================================
-   Hero Section
+   Hero Section — the sigil chamber
    ============================================ */
 
 .hero {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  position: relative;
   margin: 3.5rem 0 3rem;
-  padding: 2rem;
+  padding: 3rem 2rem 2.5rem;
   background: var(--bg-raised);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-md);
-  position: relative;
+  border: 1px solid var(--border-warm);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
+  text-align: center;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-  opacity: 0.6;
+  inset: 0;
+  background:
+    repeating-radial-gradient(circle at 50% 40%,
+      transparent 0px, transparent 38px,
+      rgba(138, 15, 15, 0.05) 39px, rgba(138, 15, 15, 0.05) 40px);
   pointer-events: none;
 }
 
-.hero-avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--bg);
-  box-shadow: var(--shadow-md);
-  flex-shrink: 0;
-  transition: transform 0.4s var(--ease-spring), box-shadow 0.3s ease;
+.hero-dragon {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 1rem;
   position: relative;
   z-index: 1;
+  filter: drop-shadow(0 0 18px rgba(255, 59, 59, 0.25));
+  transition: filter 0.4s ease, transform 0.5s var(--ease-spring);
 }
 
-.hero-avatar:hover {
-  transform: scale(1.08) rotate(-3deg);
-  box-shadow: var(--shadow-lg);
+.hero-dragon:hover {
+  filter: drop-shadow(0 0 30px rgba(255, 59, 59, 0.45));
+  transform: scale(1.03) rotate(1deg);
+}
+
+.hero-dragon .scale { fill: var(--accent); }
+.hero-dragon .scale-dark { fill: var(--accent-soft); }
+.hero-dragon .eye {
+  fill: var(--accent-glow);
+  animation: eyeGlow 3.2s ease-in-out infinite;
+}
+.hero-dragon .rune { stroke: var(--muted); opacity: 0.5; }
+
+@keyframes eyeGlow {
+  0%, 100% { opacity: 0.65; filter: drop-shadow(0 0 2px var(--accent-glow)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px var(--accent-glow)); }
 }
 
 .hero-text {
@@ -275,60 +280,55 @@ body.ltr {
 }
 
 .hero-text h1 {
-  margin: 0 0 0.4rem;
-  font-size: 2.8rem;
+  margin: 0 0 0.5rem;
+  font-size: 3rem;
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   line-height: 1.1;
-  background: linear-gradient(135deg, var(--fg) 0%, var(--muted) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--fg);
+  text-shadow: 0 0 20px rgba(138, 15, 15, 0.5), 0 0 2px rgba(0,0,0,0.8);
 }
 
 .hero-tagline {
   color: var(--muted);
-  font-size: 1.1rem;
-  margin: 0;
-  max-width: 40ch;
+  font-size: 1.05rem;
+  margin: 0 auto;
+  max-width: 42ch;
   line-height: 1.7;
+  font-style: italic;
 }
 
 .hero-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   color: var(--muted-light);
 }
 
 .hero-status::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  background: #22c55e;
+  width: 7px;
+  height: 7px;
+  background: var(--accent-glow);
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 6px var(--accent-glow);
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
+  50% { opacity: 0.4; transform: scale(1.3); }
 }
 
 @media (max-width: 560px) {
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.25rem;
-    padding: 1.75rem;
-  }
-  .hero-avatar { width: 72px; height: 72px; }
-  .hero-text h1 { font-size: 2.2rem; }
-  .hero-tagline { font-size: 1rem; }
+  .hero { padding: 2.25rem 1.5rem; }
+  .hero-dragon { width: 130px; height: 130px; }
+  .hero-text h1 { font-size: 2.3rem; }
+  .hero-tagline { font-size: 0.95rem; }
 }
 
 /* ============================================
@@ -346,19 +346,20 @@ main.container {
    ============================================ */
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-h1 { font-size: 2.6rem; margin-bottom: 0.6rem; }
+h1 { font-size: 2.4rem; margin-bottom: 0.6rem; color: var(--fg); }
+
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.6rem;
+  color: var(--fg);
 }
 
 h2::after {
@@ -366,29 +367,30 @@ h2::after {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), transparent);
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-glow), transparent);
+  box-shadow: 0 0 6px rgba(255, 59, 59, 0.4);
   border-radius: 2px;
 }
 
 h2 a {
   color: var(--fg);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-h2 a:hover { color: var(--accent); }
+h2 a:hover { color: var(--accent-glow); text-shadow: var(--glow-red); }
 
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   color: var(--fg-soft);
 }
 
 a {
-  color: var(--accent);
+  color: var(--accent-warm);
   text-decoration: underline;
   text-decoration-color: var(--accent-soft);
   text-underline-offset: 4px;
@@ -397,8 +399,9 @@ a {
 }
 
 a:hover {
-  text-decoration-color: var(--accent);
-  color: var(--accent-warm);
+  text-decoration-color: var(--accent-glow);
+  color: var(--accent-glow);
+  text-shadow: 0 0 8px rgba(255, 59, 59, 0.35);
 }
 
 p, li {
@@ -409,7 +412,7 @@ p, li {
 p:last-child { margin-bottom: 0; }
 
 /* ============================================
-   About Page
+   About / Content Page (rendered via .Content)
    ============================================ */
 
 .about-page {
@@ -417,15 +420,15 @@ p:last-child { margin-bottom: 0; }
 }
 
 .about-page h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
 }
 
 .about-page > p:first-of-type {
-  font-size: 1.2rem;
-  color: var(--muted);
+  font-size: 1.15rem;
+  color: var(--fg-soft);
   line-height: 1.9;
   margin-bottom: 2rem;
 }
@@ -433,37 +436,33 @@ p:last-child { margin-bottom: 0; }
 body:not(.ltr) .about-page > p:first-of-type::first-letter,
 body.ltr .about-page > p:first-of-type::first-letter {
   font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--accent);
-  float: right;
-  line-height: 0.85;
-  margin-inline-start: 0.5rem;
-  margin-top: 0.2rem;
-}
-
-body.ltr .about-page > p:first-of-type::first-letter {
-  float: left;
-  margin-inline-end: 0.5rem;
-  margin-inline-start: 0;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--accent-warm);
+  text-shadow: 0 0 10px rgba(138, 15, 15, 0.5);
 }
 
 .about-page h2 {
   margin-top: 2.5rem;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--muted);
   font-family: var(--font-body);
   font-weight: 600;
 }
 
-/* uppercase + letter-spacing only make sense for Latin script;
-   letter-spacing breaks Persian/Arabic letter joining */
+.about-page h2::after { display: none; }
+
+.about-page h2::before {
+  content: '◈';
+  display: inline-block;
+  margin-inline-end: 0.5rem;
+  color: var(--accent);
+}
+
 body.ltr .about-page h2 {
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
-
-.about-page h2::after { display: none; }
 
 .about-page ul {
   list-style: none;
@@ -480,7 +479,7 @@ body.ltr .about-page h2 {
   content: '—';
   position: absolute;
   right: 0;
-  color: var(--accent);
+  color: var(--accent-warm);
   font-weight: 600;
 }
 
@@ -506,11 +505,12 @@ body.ltr .about-page ul li::before {
   justify-content: space-between;
   align-items: baseline;
   gap: 1.5rem;
-  transition: padding-inline-start 0.2s var(--ease-out);
+  transition: padding-inline-start 0.2s var(--ease-out), border-color 0.2s ease;
 }
 
 .post-list li:hover {
   padding-inline-start: 0.5rem;
+  border-color: var(--border-warm);
 }
 
 .post-list li a {
@@ -521,7 +521,7 @@ body.ltr .about-page ul li::before {
   transition: color 0.2s ease;
 }
 
-.post-list li a:hover { color: var(--accent); }
+.post-list li a:hover { color: var(--accent-glow); }
 
 .post-list .date {
   color: var(--muted-light);
@@ -543,6 +543,7 @@ body.ltr .about-page ul li::before {
   max-width: 100%;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  filter: saturate(0.9) contrast(1.05);
 }
 
 .content pre {
@@ -563,7 +564,7 @@ body.ltr .about-page ul li::before {
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.9em;
-  color: var(--accent);
+  color: var(--accent-glow);
 }
 
 .content pre code {
@@ -573,34 +574,16 @@ body.ltr .about-page ul li::before {
 }
 
 blockquote {
-  border-inline-start: 4px solid var(--accent);
+  border-inline-start: 3px solid var(--accent);
   margin: 2rem 0;
   padding: 1rem 1.5rem;
-  padding-inline-start: 1.5rem;
   color: var(--muted);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
   line-height: 1.7;
   background: var(--bg-raised);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  position: relative;
-}
-
-blockquote::before {
-  content: '"';
-  position: absolute;
-  top: -0.3rem;
-  right: 0.5rem;
-  font-size: 3rem;
-  color: var(--accent-soft);
-  font-family: var(--font-display);
-  line-height: 1;
-  opacity: 0.6;
-}
-
-body.ltr blockquote::before {
-  right: auto;
-  left: 0.5rem;
 }
 
 /* ============================================
@@ -676,8 +659,9 @@ body.ltr blockquote::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+  box-shadow: 0 0 10px rgba(255, 59, 59, 0.5);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s var(--ease-out);
@@ -694,14 +678,14 @@ body.ltr blockquote::before {
 }
 
 .home-link-title {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--fg);
   transition: color 0.2s ease;
 }
 
-.home-link:hover .home-link-title { color: var(--accent); }
+.home-link:hover .home-link-title { color: var(--accent-glow); }
 
 .home-link-desc {
   color: var(--muted);
@@ -710,14 +694,16 @@ body.ltr blockquote::before {
 }
 
 .home-link-icon {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 0.25rem;
-  opacity: 0.7;
-  transition: transform 0.3s var(--ease-spring);
+  opacity: 0.75;
+  filter: drop-shadow(0 0 4px rgba(255, 59, 59, 0.2));
+  transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
 }
 
 .home-link:hover .home-link-icon {
   transform: scale(1.15) rotate(-5deg);
+  filter: drop-shadow(0 0 8px rgba(255, 59, 59, 0.4));
 }
 
 /* ============================================
@@ -759,7 +745,7 @@ body.ltr blockquote::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(8,7,10,0.6) 0%, transparent 55%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -776,6 +762,7 @@ body.ltr blockquote::before {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(0.85) contrast(1.08);
   transition: transform 0.5s var(--ease-out);
 }
 
@@ -794,8 +781,8 @@ body.ltr blockquote::before {
   font-size: 1.05rem;
   margin: 0;
   line-height: 1.4;
-  font-weight: 600;
-  font-family: var(--font-display);
+  font-weight: 700;
+  font-family: var(--font-body);
 }
 
 .card-date {
@@ -834,19 +821,27 @@ body.ltr blockquote::before {
 
 .tag:hover {
   background: var(--accent-soft);
-  color: var(--accent);
-  border-color: var(--accent-soft);
+  color: var(--accent-glow);
+  border-color: var(--accent);
 }
 
 /* ============================================
-   Divider
+   Divider — a jagged sigil-line instead of a plain rule
    ============================================ */
 
 .divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  height: 12px;
   margin: 3rem 0;
   border: none;
+  background:
+    linear-gradient(90deg, transparent, var(--border-warm) 20%, var(--border-warm) 80%, transparent);
+  clip-path: polygon(
+    0% 50%, 5% 20%, 10% 50%, 15% 80%, 20% 50%, 25% 20%, 30% 50%, 35% 80%,
+    40% 50%, 45% 20%, 50% 50%, 55% 80%, 60% 50%, 65% 20%, 70% 50%, 75% 80%,
+    80% 50%, 85% 20%, 90% 50%, 95% 80%, 100% 50%, 100% 55%, 95% 85%, 90% 55%,
+    85% 25%, 80% 55%, 75% 85%, 70% 55%, 65% 25%, 60% 55%, 55% 85%, 50% 55%,
+    45% 25%, 40% 55%, 35% 85%, 30% 55%, 25% 25%, 20% 55%, 15% 85%, 10% 55%, 5% 25%, 0% 55%
+  );
 }
 
 /* ============================================
@@ -864,13 +859,14 @@ body.ltr blockquote::before {
 
 .site-footer a {
   color: var(--muted);
-  text-decoration-color: var(--border);
+  text-decoration-color: var(--border-warm);
   transition: all 0.2s ease;
 }
 
 .site-footer a:hover {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
+  color: var(--accent-glow);
+  text-decoration-color: var(--accent-glow);
+  text-shadow: 0 0 6px rgba(255, 59, 59, 0.3);
 }
 
 .footer-links {
@@ -892,14 +888,8 @@ body.ltr blockquote::before {
    ============================================ */
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-in {
@@ -918,15 +908,14 @@ body.ltr blockquote::before {
 
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.4rem; }
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.3rem; }
   .card-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   .home-links { grid-template-columns: 1fr; }
   .post-list li { flex-direction: column; gap: 0.25rem; }
   .post-list .date { font-size: 0.75rem; }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
