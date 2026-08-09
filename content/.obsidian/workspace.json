@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_index.md",
+                "file": "novels/A Mid Start To A Mid Life/chapter-08.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_index"
+              "title": "chapter-08"
             }
           }
         ]
@@ -186,8 +186,11 @@
   },
   "active": "95229a3619387c10",
   "lastOpenFiles": [
-    "404.md",
+    "novels/A Mid Start To A Mid Life/chapter-07.md",
+    "novels/A Mid Start To A Mid Life/chapter-08.md",
+    "novels/A Mid Start To A Mid Life/chapter-06.md",
     "_index.md",
+    "404.md",
     "blog/_index.md",
     "blog/startinga.md",
     "knowledge/_index.md",
@@ -203,7 +206,6 @@
     "novels/A Mid Start To A Mid Life/chapter-02.md",
     "novels/A Mid Start To A Mid Life/chapter-03.md",
     "novels/A Mid Start To A Mid Life/chapter-04.md",
-    "novels/A Mid Start To A Mid Life/chapter-05.md",
-    "novels/A Mid Start To A Mid Life/chapter-06.md"
+    "novels/A Mid Start To A Mid Life/chapter-05.md"
   ]
 }
